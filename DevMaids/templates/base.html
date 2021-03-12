@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<style>
+		body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+		body {font-size:16px;}
+		.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+		.w3-half img:hover{opacity:1}
+		/* Default Styling */
+html {
+	scroll-behavior: smooth;
+}
+li{
+	list-style-type: none;
+}
+
+
+#id_message{
+  color:black!important;  
+  opacity: 1!important;
+}
+
+
+
+/* Style Toggle Classes */
+
+#go-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: rgb(220,20,60);
+  color: white;
+  cursor: pointer;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 25%;
+  box-shadow: 0px 0px 20px 5px #000;
+  font-size: 14px;
+}
+#id_username, #id_password, #id_password1, #id_password2, #id_message {
+  width: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+  /* color: whitesmoke; */
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  border-bottom: 1px solid crimson;
+}
+#id_username:focus, #id_password:focus, #id_password1:focus, #id_password2:focus, #id_message:focus{
+  border-bottom: 1px solid orangered;
+  border-radius: 0px;
+}
+.chat {
+  /* background: rgb(104, 18, 35);  */
+  
+  border-radius: 10px; 
+  width: 70%; 
+  padding: 10px;
+}
+.chat-content {
+ 	font-family: 'Ubuntu', cursive;
+}
+.chat-user-special{
+  color: blue;
+  font-size: 12px;
+}
+.chat-date{
+  font-size: 10px; 
+}
+.chat-user{
+  font-size: 12px; 
+  margin-left: 10px;
+}
+.heading {
+	font-family: 'Pacifico', cursive;
+	letter-spacing: 2px;
+}
+
+.sub-heading {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 18px;
+}
+.hr {
+	background: #555;
+}
+.link {
+	font-family: 'Poppins', sans-serif;
+	color: black;
+	line-height: 35px;
+	transition: 250ms ease;
+	/* opacity: 1; */
+}
+.link:hover {
+	font-family: 'Poppins', sans-serif;
+	color: black;
+	margin-left: 10px;
+  margin-right: 10px;
+	opacity: 1;
+  text-decoration: none;
+}
+.description {
+	margin-top: 20px;
+	font-family: 'Poppins', sans-serif;
+	font-size: 13px;
+}
+.normal {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+
+
+
+
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #202020;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+		</style>
+<head>
+
+		
+		<!-- Title -->
+		<title>{% block title %} {% endblock title %}</title>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+		
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+		
+		<!-- Style sheet -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/svg" href="{% static 'favicon.svg' %}">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+</head>
+<body style="background: white; color: black;">
+
+
+		<!-- Nav -->
+		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+			<a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px"> X    Close Menu</a>
+			<link rel="shortcut icon" type="image/svg" href="{% static 'favicon.svg' %}">
+			<img style="margin-left: 70px;" src="https://static.thenounproject.com/png/581062-200.png" alt="Girl in a jacket" width="120" height="120">
+		  {% if user.is_authenticated %}
+		  <div class="w3-container">
+			<h2 style="font-family: 'Redressed', cursive; color:black;" class="w3-padding-64"><b>DevMaids</b></h2>
+		  </div>
+		  <div class="w3-bar-block">
+			<a href="{% url 'home' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ana Sayfa</a> 
+			<a href="{% url 'genel:all' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white" >Genel</a>
+
+			<a href="{% url 'chat:all' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Yapay Zeka</a> 
+			<a href="{% url 'machine:all' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Mobil Programlama</a> 
+			<a href="{% url 'front:all' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Front-End</a> 
+			<a href="{% url 'backend:all' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Back-End</a>
+			<a style="color: black;" href="{% url 'accounts:logout' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"><i class="fa fa-sign-out" aria-hidden="true"> </i> Çıkış Yap</a> 
+			 
+		</div>
+		  {% else %}
+		  <div class="w3-container">
+			<h2  style="font-family: 'Redressed', cursive; color:black;"class="w3-padding-64"><b>DevMaids</b></h2>
+		  </div>
+		  <div class="w3-bar-block">
+			<a href="{% url 'home' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">AnaSayfa</a> 
+			<a href="{% url 'accounts:signup' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Hesap Oluştur</a> 
+			<a href="{% url 'accounts:login' %}"onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Giriş Yap</a> 
+		
+		</div>
+		  {% endif %}
+		</nav>
+		<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+			<a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+			<span>DevMaids</span>
+		  </header>
+		  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+		<!-- Content -->
+		<div class="w3-main" style="margin-top:70px;margin-left:340px;margin-right:40px">{% block content %}{% endblock content %}</div>
+		<br><br><br><br>
+
+
+
+
+
+		<button onclick="topFunction()" id="go-to-top" title="Go to top">&#8593;</button>
+		<script type="text/javascript">
+			//Get the button:
+			go_to_top = document.getElementById("go-to-top");
+
+			// When the user scrolls down 20px from the top of the document, show the button
+			window.onscroll = function() {scrollFunction()};
+
+			function scrollFunction() {
+			  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 200) {
+			    go_to_top.style.display = "block";
+			  } else {
+			    go_to_top.style.display = "none";
+			  }
+			}
+
+			// When the user clicks on the button, scroll to the top of the document
+			function topFunction() {
+			  document.body.scrollTop = 0; // For Safari
+			  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+			}
+	
+			// Script to open and close sidebar
+			function w3_open() {
+			  document.getElementById("mySidebar").style.display = "block";
+			  document.getElementById("myOverlay").style.display = "block";
+			}
+			 
+			function w3_close() {
+			  document.getElementById("mySidebar").style.display = "none";
+			  document.getElementById("myOverlay").style.display = "none";
+			}
+			
+			// Modal Image Gallery
+			function onClick(element) {
+			  document.getElementById("img01").src = element.src;
+			  document.getElementById("modal01").style.display = "block";
+			  var captionText = document.getElementById("caption");
+			  captionText.innerHTML = element.alt;
+			}
+			</script>
+</body>
+</html>

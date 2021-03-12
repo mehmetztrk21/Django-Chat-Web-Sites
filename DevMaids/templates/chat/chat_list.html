@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    DevMaids
+{% endblock title %}
+
+{% block content %}
+    <a href="/chat"><button class="btn btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i>
+    Yeni mesajlar için sayfayı yenileyin</button></a><br><br><br>
+
+    {% for chat in object_list %}
+
+
+    <div class="chat" style="width: 80%; background:#f44336 ">
+		{% if chat.user.is_superuser %}
+            
+    		    <small class="chat-user-special" > {{ chat.user }}- Admin </small>
+
+
+            
+    		
+    		{% else %}
+
+						<small class="chat-user"> {{ chat.user }} </small>    		    
+
+    		{% endif %}
+    		<p><b class="chat-content">{{ chat|linebreaks }}</b></p>
+    		<small class="chat-date">{{ chat.posted_at }}</small>
+    	</div><br><br>
+
+    {% empty %}
+    <h1 class="heading">Henüz Mesaj Yok!</h1><br>
+
+    {% endfor %}
+    <br><a href="{% url 'chat:new' %}"><button class="btn btn-outline-primary">Yeni Mesaj</button></a>
+{% endblock content %}

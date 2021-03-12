@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+    DevMaids
+{% endblock title %}
+
+{% block content %}
+
+		{% if not user.is_authenticated %}
+		    <h1 class="heading" style="text-align: center;">DevMaids'e Hoşgeldiniz!</h1><br><hr class="hr"><br>
+		    <h5>Mesaj Oluşturmak için Giriş Yapınız.</h5><br>
+	     	| <a href="http://127.0.0.1:8000/accounts/login/" style="color:black;opacity:1;"class="link">Giriş Yap!</a> |
+	    	
+
+			
+		    <br><br>
+
+			<img style="margin-top: 60px;margin-left:200px;opacity: 0.7; " src="https://icon-library.com/images/software-development-icon/software-development-icon-16.jpg" alt="" width="400px" height="400px" >
+		{% else %}
+		    <h1 class="heading" style="text-align: center">Merhaba, {{ user }}!</h1><br><hr class="hr"><br><br>
+		    <h2 class="normal">Şu anda DevMaids'e giriş yaptınız!</h2><br><hr><br>
+		    <h4 class="normal">Hangi gruba katılmak  istersiniz?</h4><br>
+
+		  | <a href="{% url 'genel:all' %}"style="color:black;opacity:1;" class="link">Genel</a> |
+		  <a href="{% url 'chat:all' %}"style="color:black;opacity:1;" class="link">Yapay Zeka</a> |
+		  <a href="{% url 'machine:all' %}"style="color:black;opacity:1;" class="link">Mobil Programlama</a> |
+		  <a href="{% url 'front:all' %}"style="color:black;opacity:1;" class="link">Front-End</a> |
+		  <a href="{% url 'backend:all' %}"style="color:black;opacity:1;" class="link">Back-End</a> |
+
+			
+			<a style="color: red;" href="{% url 'accounts:logout' %}"style="color:black;opacity:1; class="link"><i class="fa fa-sign-out" aria-hidden="true"></i> Çıkış Yap</a> |
+		    
+
+	
+
+		    	<br><br>
+		    </div>
+		{% endif %}
+
+{% endblock content %}

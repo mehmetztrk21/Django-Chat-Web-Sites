@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+
+   DevMaids Üye Olma Portalı
+
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+			<div class="col-md-4">
+				<form method="POST">
+					{% csrf_token %}
+					{{ form.as_p }}
+
+					<input type="submit" value='Signup' class="btn btn-outline-primary">
+				</form>
+			</div>
+
+			<div class="col-md-7">
+				<h4>DevMaids'in bir parçası olmak için hemen üye olun</h4><hr>
+				<p class="description">
+					DevMaids kullanicıların karşılastıkları sorunlara anlık aktif olan kullanıcılar
+tarafından çözüm sağlamayi amaçlar.
+				</p>
+			</div>
+			<img style="margin-top: 60px;margin-left:200px;opacity: 0.7; " src="https://icon-library.com/images/software-development-icon/software-development-icon-16.jpg" alt="" width="400px" height="400px" >
+		
+		</div>
+{% endblock content %}
